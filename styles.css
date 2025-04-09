@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap');
 
 :root {
     --fallout-dark-green: #0a290a;
@@ -8,290 +9,619 @@
     --fallout-bright-green: #66ff99;
   }
 
-/* General configurations*/
 *{
-    margin: 0;
+    margin : 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: poppins, sans-serif;
     text-decoration: none;
-    border: none;
-    outline: none;
-    font-family: 'noto sans', sans-serif;
+    scroll-behavior: smooth;
 }
 
-html{
-    font-size: 62.5%;
-}
-
-body{
+body {
     width: 100%;
-    height: 100vh;
+    height: auto;
+    background-color: black;
     overflow-x: hidden;
-    /* background: rgb(11, 22, 13);*/
-    background-image: url("brands/background.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    color: white;
 }
 
-/* searchbar styles */
+/* Custom Scrollbar Styles CSS*/
 
-header{
-    margin-top: 20px;
-    position: fixed;
-    top: 0;
-    left: 0;
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+    background: var(--fallout-green);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--fallout-terminal-green);
+}
+
+/* Navbar styles */
+
+nav {
     width: 100%;
-    padding: 1rem 9%;
-    background-color: transparent;
-    filter: drop-shadow(10px);
+    height: 10vh;
+}
+
+.nav-container {
+    width: 100%;
+    height: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
-    z-index: 100;
 }
 
 .logo {
-    font-size: 3rem;
-    color: var(--fallout-green);
-    font-weight: 800;
+    color: white;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.logo span {
+    color: var(--fallout-glow-green);
+    text-shadow: 0 0 10px var(--fallout-glow-green), 0 0 20px var(--fallout-glow-green), 0 0 30px var(--fallout-glow-green);
+}
+
+.hamburg,
+.cancel {
     cursor: pointer;
-    transition: 0.5s ease;
-    border-bottom: 3px solid transparent;
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    color: white;
+    opacity: 0;
+    pointer-events: none;
+    font-size: clamp(2rem, 0.5rem + 5vw, 3rem);
 }
 
-.logo:hover {
-    transform: scale(1.3);
-    color: var(--fallout-bright-green);
+.nav-container .links {
+    display: flex;
+
 }
 
-nav a {
-    font-size: 1.8rem;
-    color: var(--fallout-bright-green);
-    margin-left: 4rem;
-    font-weight: 500;
-    transition: 0.3s ease;
-    border-bottom: 3px solid transparent;
+.nav-container .links a {
+    position: relative;
+    font-size: 1.2rem;
+    color: white;
+    margin: 0 20px;
+    text-decoration: none;
+    font-weight: 550;
+    transition: 0.3s linear;
 }
 
-nav a:hover,
-nav a.active {
-    color: var(--fallout-green);
-    border-bottom: 3px solid rgb(43, 75, 36);
+.nav-container .links a::before {
+    position: absolute;
+    content: "";
+    bottom: -3px;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background-color: var(--fallout-green);
+    transition: 0.2s linear;
 }
 
-@media (max-width:995px) {
-    nav {
-        position: absolute;
-        display: none;
-        top: 0;
-        right: 0;
-        width: 40%;
-        border-left: 3px solid rgb(43, 75, 36);
-        border-bottom: 3px solid rgb(43, 75, 36);
-        border-bottom-left-radius: 2rem;
-        padding: 1rem solid;
-        background-color: black;
-        border-top: 0.1rem solid rgba(0,0,0,0.1);
-    }
-
-    nav.active{
-        display: block;
-    }
-
-    nav a{
-        display: block;
-        font-size: 2rem;
-        margin: 3rem 0;
-    }
-
-    nav a:hover,
-    nav a.active {
-        padding: 1rem;
-        border-radius: 0.5rem;
-        border-bottom: 0.5rem solid rgb(43, 75, 36);
-    }
+.nav-container .links a:hover::before {
+    width: 100%;
 }
 
-/*content styles section*/
+.nav-container .links a:hover {
+    color: var(--fallout-glow-green);
+    text-shadow: 0 0 10px var(--fallout-glow-green), 0 0 20px var(--fallout-glow-green);
+}
+
+.dropdown {
+    z-index: 100;
+    position: absolute;
+    top: 0;
+    transform: translateY(-500px);
+    width: 100%;
+    height: auto;
+    backdrop-filter: blur(4px) brightness(40%);
+    box-shadow: 0 0 20px black;
+    transition: 0.2s linear;
+}
+
+.dropdown .links a{
+    display: flex;
+    color: white;
+    text-decoration: none;
+    justify-content: center;
+    padding: 15px 0;
+    align-items: center;
+    transition: 0.2s linear;
+}
+
+.dropdown .links a:hover{
+    color: var(--fallout-glow-green);
+    text-shadow: 0 0 10px var(--fallout-glow-green), 0 0 20px var(--fallout-glow-green);
+}
 
 section {
-    min-height: 100vh;
-    padding: 5rem 9% 5rem;
+    width: 100%;
+    min-height: 90vh;
 }
 
-.home {
+section .main-container {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    padding-left: 100px;
     align-items: center;
-    gap: 8rem;
-    /*background-color: rgb(11, 22, 13);*/
-    background-image: url("brand/img/background.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
 }
 
-.home .home-content h1 {
-    font-size: 6rem;
-    font-weight: 700;
-    line-height: 1.3;
+.main-container .image {
+    width: 500px;
+    height: 80vh;
+    border-radius: 100%;
+    overflow: hidden;
+    box-shadow: 0 0 10px var(--fallout-glow-green), 0 0 20px var(--fallout-glow-green);
 }
 
-span {
-    color: var(--fallout-green);
+.main-container .image img {
+    width: 100%;
+    height: 80vh;
 }
 
-.home-content h3 {
-    font-size: 4rem;
-    margin-bottom: 1rem;
-    font-weight: 700;
+.main-container .image:hover {
+    animation: animate 1.5s ease-in-out infinite;
 }
 
-.home-content p {
-    font-size: 1.7rem;
+@keyframes animate{
+    0%{
+        scale: 1;
+
+    }
+
+    50%{
+        scale: 1.05;
+    }
+
+    100%{
+        scale: 1;
+    }
 }
 
-.home-img {
-    border-radius: 50%;
+.main-container .content{
+    color: white;
+    width: 40%;
 }
 
-.home-img img {
-    position: relative;
-    width: 32vw;
-    border-radius: 50%;
-    box-shadow: 0 0 25px solid var(--fallout-green);
-    cursor: pointer;
-    transition: .02s linear;
+.content h1 {
+    font-size: clamp(1rem, 1rem + 5vw, 1.8rem);
 }
 
-.home-img img:hover {
-    font-size: 1.8rem;
-    font-weight: 500;
+.content h1 span  {
+    color: var(--fallout-glow-green);
+    text-shadow: 0 0 10px var(--fallout-glow-green), 0 0 20px var(--fallout-glow-green), 0 0 30px var(--fallout-glow-green);
 }
 
-/*icons styles section*/
+.content .typewriter{
+    font-size: clamp(1rem, 1rem + 5vw, 2.1rem);
+    font-weight: 600;
+}
 
-.social-icons a{
+.content .typewriter-text {
+    color: var(--fallout-glow-green);
+    text-shadow: 0 0 10px var(--fallout-glow-green), 0 0 20px var(--fallout-glow-green), 0 0 30px var(--fallout-glow-green);
+}
+
+.content p {
+    font-size: clamp(0.4rem, 0.2rem + 9vw, 1rem);
+    margin: 10px 0;
+}
+
+.social-icons i {
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    width: 4rem;
-    height: 4rem;
+    width: 3rem;
+    height: 3rem;
     background-color: transparent;
-    border: 0.2rem solid var(--fallout-green);
-    font-size: 2rem;
+    border:0.2rem solid #16a085;
     border-radius: 50%;
-    margin: 3rem 1.5rem 3rem 0;
-    transition: 0.3s ease;
-    color: var(--fallout-light-green);
+    color: #16a085;
+    margin: 5px 15px;
+    font-size: 1.5rem;
+    transition: 0.2s linear;
 }
 
-.social-icons a:hover {
-    transform: scale(1.3)translateY(-5px);
-    background-color: var(--fallout-green);
-    box-shadow: 0 0 25px var(--fallout-green);
+.social-icons i:hover {
+    scale: 1.3;
+    color: black;
+    background-color: #16a085;
+    filter: drop-shadow(0 0 10px var(--fallout-bright-green));
 }
 
-/*button styles section*/
-
-.btn {
-    display: inline-block;
-    padding: 1rem 2.8rem;
-    background-color: rgb(11, 22, 13);
-    border-radius: 4rem;
-    font-size: 1.6rem;
-    color: var(--fallout-green);
-    letter-spacing: 0.3rem;
-    font-weight: 600
-    border 2px solid var(--fallout-green);
-    transition: 0.3s ease;
-    cursor: pointer;
-}
-
-.btn:hover {
-    transform: scale3d(1.03);
-    background-color: var(--fallout-green);
+.content button {
+    width: 50%;
+    height: 6vh;
+    margin: 30px;
+    background-color: var(--fallout-light-green);
     color: white;
-    box-shadow: 0 0 25px var(--fallout-green);
+    border: none;
+    outline: none;
+    font-size: 120%;
+    font-weight: 700;
+    border-radius: 5px;
+    transition: 0.2s linear;
 }
 
-.typing-text {
-    font-size: 34px;
-    font-weight: 600;
-    min-width: 280px;
-}
-
-.typing-text span {
-    position: relative;
-}
-
-.typing-text span::before{
-    content: "web developer";
-    color: var(--fallout-green);
-    animation: words 20s infinite;
-}
-
-.typing-text span::after{
-    content:"";
+.content button:hover {
+    scale: 1.1;
+    color: #16a085;
+    border: 2px solid #16a085;
     background-color: transparent;
+    font-weight: 700;
+    box-shadow: 0 0 30px #2ecc71;
+}
+
+/*About section Styles */
+
+section .content{
+    width: 80%;
+    margin: 0px auto;
+    font-family: 'Poppins',sans-serif;
+
+}
+
+.about .about-details{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+section .title{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+section .title span{
+    color:white;
+    font-size: 30px;
+    font-weight: 600;
+    position: relative;
+    padding-bottom: 8px;
+}
+
+section .title span::before,
+section .title span::after{
+    content: "";
     position: absolute;
-    width: calc(100% + 8px);
-    height: 100%;
-    border-left: 3px solid var(--fallout-bright-green);
-    right: -8;
-    animation: cursor 0.5s infinite;
+    height: 3px;
+    width: 100%;
+    background-color: #66ff99;
+    left: 0;
+    bottom: 0;
 }
 
-@keyframes cursor {
-    to{
-        border-left: 3px solid var(--fallout-green);
-    }
+section .title span::after{
+    bottom: -7px;
+    width: 70%;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
-@keyframes words {
-    0%, 20%{
-        content: "Web developer";
-    }
-    20%, 40%{
-        content: "MySQL developer";
-    }
-    40%, 60%{
-        content: "Web designer";
-    }
-    60%, 80%{
-        content: "AWS cloud practitioner";
-    }
-    80%, 100%{
-        content: "Linux User";
-    }
+.about .about-details .left{
+    width: 45%;
+}
+
+.about .left img{
+    height: 400px;
+    width: 400px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.about-details .right{
+    width: 55%;
+}
+section .topic{
+    color: white;
+    font-size: 25px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+.about-details .right p{
+    text-align: justify;
+    color: white;
+}
+section .button{
+    margin: 16px 0;
+}
+section .button .button{
+    outline: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-size: 25px;
+    font-weight: 400;
+    background-color: var(--fallout-glow-green);
+    color: #fff;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: all 0.4s ease;
+}
+section .button .button:hover{
+    border-color: var(--fallout-glow-green);
+    background-color: #fff;
+    color: #2ecc71;
+}
+
+.skills{
+    background: black;
+}
+.skills.content{
+    padding: 40px 0;
+}
+.skills .skills-details{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.skills-details .text{
+    width: 50%;
+}
+.skills-details p {
+    color: white;
+    text-align: justify;
+}
+
+.skills .skills-details .experience{
+    display: flex;
+    align-items: center;
+    margin: 0 10px;
+}
+
+.skills-details .experience .num{
+    color: white;
+    font-size: 80px;
+}
+
+.skills-details .experience .exp{
+    color: white;
+    margin-left: 20px;
+    font-size: 18px;
+    font-weight: 500;
+    margin: 0 6px;
+}
+
+.skills-details .boxes{
+    width: 45%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.skills-details .box{
+    width: calc(100% / 2 - 20px);
+    margin: 20px 0;
+}
+.skills-details .boxes .topic{
+    font-size: 20px;
+    color: #16a085;
+}
+.skills-details .boxes .percent{
+    font-size: 60px;
+    color: #16a085;
+}
+
+.experience .boxes{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.experience .boxes .box{
+    margin: 20px 0;
+    width: calc(100% / 3 - 20px);
+    text-align: center;
+    border-radius: 12px;
+    padding: 30px 10px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.12);
+    cursor: default;
+    color: white;
+    transition: all 0.4s ease;
+}
+
+.experience .boxes .box:hover{
+    background-color: var(--fallout-green);
+    color: #fff;
+
+}
+
+.experience .boxes .box .icon{
+    height: 50px;
+    width: 50px;
+    background-color: #16a085;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 50px;
+    font-size: 18px;
+    color: #fff;
+    margin: 0 auto 10px auto;
+    transition: all 0.4s ease;
+}
+
+.boxes .box:hover .icon{
+    background-color: #fff;
+    color: #16a085;
+}
+
+.services .boxes .box:hover .topic,
+.services .boxes .box:hover p{
+    color: white;
+    transition: all 0.4s ease;
+}
+
+.services .boxes .box:hover .topic,
+.services .boxes .box:hover{
+    color: #fff;
+}
+
+/*Contact me Styles section*/
+
+.contact {
+    background-color: black;
+
+}
+
+.contact .content{
+    margin: 0 auto;
+    padding: 30px 0;
+
+}
+
+.contact .text{
+    width: 80%;
+    text-align: center;
+    margin: auto;
+}
+
+footer{
+    background-color: #16a085;
+    padding: 15px 0;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+}
+footer .text span{
+    font-size: 17px;
+    font-weight: 400;
+    color: #fff;
+}
+footer .text span a{
+    font-weight: 500;
+    color: #fff;
+}
+
+footer .text span a:hover{
+    text-decoration: underline;
+}
+.scroll-button a {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    color: #fff;
+    background: #16a085;
+    padding: 7px 12px;
+    font-size: 18px;
+    border-radius: 6px;
+    box-shadow: rgba(0, 0, 0, 0.15);
+    display: none;
 }
 
 @media (max-width: 1000px){
-    .home{
-        gap: 4rem;
-    }
-}
-
-@media (max-width: 995px){
-    .home{
+    .about .about-details{
+        justify-content: center;
         flex-direction: column;
-        margin: 5rem 4rem;
     }
-
-    .home .home-content h3{
-        font-size: 2.5rem;
+    .about .about-details .left{
+        display: flex;
+        justify-content: center;
+        width: 100%;
     }
-
-    .home-content h1{
-        font-size: 5rem;
+    .about-details .right{
+        width: 90%;
+        margin: 40px 0;
     }
-
-    .home-img img{
-        width: 70vw;
-        margin-top: 4rem;
+    .experience .boxes .box{
+        margin: 20px 0;
+        width: calc(100%/2 - 20px);
     }
 }
 
+@media (max-width: 900px){
+    .about .left img {
+        height: 350px;
+        width: 350px;
+    }
+}
 
+@media (max-width: 968px){
+    nav .logo{
+        position: absolute;
+        top: 16px;
+        left: 15px;
+        font-size: 1.5rem;
+    }
+
+    section .main-container{
+        padding-left: 0px;
+        display: flex;
+        flex-direction: column;
+    }
+    .nav-container .links{
+        display: none;
+    }
+
+    .hamburg, 
+    .cancel{
+        opacity: 1;
+        pointer-events: visible;
+    }
+
+    .main-container .content{
+        margin-top: 20px;
+        width: 80%;
+
+    }
+
+    .social-icons i{
+        width: 2.5rem;
+        height: 2.5rem;
+        font-size: 1.5rem;
+    }
+
+    .main-container .image{
+        z-index: -1;
+        width: 50%;
+        height: 60%;
+    }
+
+    .skills .skills-details{
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+    .skills-details .text{
+        width: 100%;
+        margin-bottom: 50px;
+    }
+    .skills-details .boxes{
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+    .experience .boxes .box{
+        margin: 20px 0;
+        width: 100%;
+    }
+    .contact .text{
+        width: 100%;
+    }
+    
+}
+
+@media (max-width: 500px){
+    .main-container .image{
+        width: 50%;
+        height: 60%;
+        margin-bottom: 0px;
+    }
+
+    .main-container .content{
+        width: 80%;
+    }
+
+    .main-container .button{
+        margin-top: 15px;
+    }
+
+    .skills-details .boxes .percent{
+        font-size: 50px;
+        color: #16a085;
+    }
+}

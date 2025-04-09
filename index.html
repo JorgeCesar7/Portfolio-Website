@@ -3,43 +3,191 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Portfolio Website</title>
     <script src="https://kit.fontawesome.com/16bf10d865.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOM8b+4g5e5a5c5e5a5c5e5a5c5e5a5c5e5a5c" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <title>My Portfolio Website</title>
 </head>
 <body>
-    <header>
-        <a href="#" class="logo">Alej</a>
 
-        <nav>
-            <a href="#" class="active">Home</a>
-            <a href="#">About</a>
-            <a href="#">Skills</a>
-            <a href="#">Projects</a>
-            <a href="#">Education</a>
-            <a href="#">Contact</a>
-        </nav>
-    </header>
-    <section class="home">
-        <div class="home-img">
-            <img src="brands/courier.png" alt="">
+    <!--Navigation Menu-->
+
+    <nav>
+        <div class="nav-container">
+            <div class="logo" data-aos="zoom-in" data-aos-duration="1500">
+                <span>Alej</span>
+            </div>
+            <div class="links">
+                <div class="link" data-aos="fade-up" data-aos-duration="100"><a href="#">Home</a></div>
+                <div class="link" data-aos="fade-up" data-aos-duration="200"><a href="#">About</a></div>
+                <div class="link" data-aos="fade-up" data-aos-duration="300"><a href="#">Skills</a></div>
+                <div class="link" data-aos="fade-up" data-aos-duration="400"><a href="#">Experience</a></div>
+                <div class="link" data-aos="fade-up" data-aos-duration="500"><a href="#">Contact</a></div>
+            </div>
+            <i class="fa-solid fa-bars hamburg" onclick="hamburg()"></i>
         </div>
-        <div class="home-content">
-            <h1>Hi, I'm <span>Alejandro</span></h1>
-            <h3 class="typing-text">I'm a <span></span></h3>
-            <p>"Todo arte, en efecto, tiene su mira en que el método adoptado sea muy a propósito para aquel fin para el cual fue adoptado. Esto pretende el viñador con sus vides, el picador comandando potros, el cazador amaestrando sus perros. ¿Y a qué otra cosa aspiran los métodos de educación e instrucción? He ahí lo que en realidad merece estima. Si lo logras, no buscarás otro bien." — Marco Aurelio, Meditaciones</p>
+        <div class="dropdown">
+            <div class="links">
+                <a href="#">Home</a>
+                <a href="#">About</a>
+                <a href="#">Skills</a>
+                <a href="#">Experience</a>
+                <a href="#">Contact</a>
+                <i class="fa-solid fa-xmark cancel" onclick="cancel()"></i>
+            </div>
+        </div>
+    </nav>
+    <section>
+        <div class="main-container">
+            <div class="image" data-aos="zoom-out" data-aos-duration="3000">
+                <img src="/brands/courier.png" alt="">
+            </div>
+            <div class="content">
+                <h1 data-aos="fade-left" data-aos-duration="1500" data-aos-delay="700">
+                    Hey I'm <span>Alejandro</span>
+                </h1>
+                <div class="typewriter" data-aos="fade-right" data-aos-duration="1500" data-aos-delay="900">I'm a <span class="typewriter-text"></span>
+                <label for="">|</label>
+            </div>
+                <p data-aos="flip-down" data-aos-duration="1500" data-aos-delay="1100">"Todo arte, en efecto, tiene su mira en que el método adoptado sea muy a propósito para aquel fin para el cual fue adoptado. Esto pretende el viñador con sus vides, el picador comandando potros, el cazador amaestrando sus perros. ¿Y a qué otra cosa aspiran los métodos de educación e instrucción? He ahí lo que en realidad merece estima. Si lo logras, no buscarás otro bien." — Marco Aurelio, Meditaciones</p>
                 <div class="social-icons">
-                    <a href="#" class><i class="fa-brands fa-github"></i></a>
-                    <a href="#" class><i class="fa-brands fa-linkedin"></i></a>
-                    <a href="#"><i class="fa-brands fa-discord"></i></a>
-                    <a href="#"><i class="fa-brands fa-google"></i></a>
+                    <a href="#"><i class="fa-brands fa-github" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="1300"></i></a>
+                    <a href="#"><i class="fa-brands fa-linkedin" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="1400"></i></a>
+                    <a href="#"><i class="fa-brands fa-discord" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="1500"></i></a>
+                    <a href="#"><i class="fa-brands fa-google" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="1600"></i></a>
                 </div>
-                <a href="#" class="btn">Hire Me</a>
+                <div class="btn" data-aos="zoom-in" data-aos-duration="1500" data-aos-delay="1800">
+                <button>Hire Me</button>
+                </div>
+            </div>
         </div>
     </section>
+
+    <!--About Section Start-->
+
+    <section class="about" id="about">
+        <div class="content">
+
+            <div class="title" data-aos="fade-up" data-aos-duration="1500"><span>About Me</span></div>
+            <div class="about-details">
+                <div class="left" data-aos="fade-right" data-aos-duration="1500" data-aos-delay="200">
+                    <img src="/brands/courier.png" alt="">
+                </div>
+                <div class="right">
+                    <div class="topic" data-aos="fade-left" data-aos-duration="1500" data-aos-delay="200">Technology Is My Passion</div>
+                    <p data-aos="flip-down" data-aos-duration="1500" data-aos-delay="300">Ever since I was a kid, I’ve been surrounded by computers, my mom owned an internet café, and that early exposure sparked a lifelong passion for technology. While I didn’t have the means to pursue a formal tech degree, I never let that stop me. I’m a self-driven learner, always finding ways to turn challenges into opportunities. Eventually, I found my calling in web development, and since then, I’ve been all-in; building projects, studying consistently, and honing my skills. This is just the beginning of the journey, and I’m excited to see where it leads</p>
+                    <div class="button" data-aos="zoom-in-right" data-aos-duration="1500" data-aos-delay="400">
+                        <button>Download CV</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!--My Skill Section Start-->
+
+    <section class="skills" id="skills">
+        <div class="content">
+            <div class="title" data-aos="fade-up" data-aos-duration="1200"><span>My Skills</span></div>
+            <div class="skills-details">
+                <div class="text">
+                   <div class="topic" data-aos="fade-right" data-aos-duration="1200" data-aos-delay="200">
+                    Skills Reflect Our Knowledge
+                   </div>
+                   <p data-aos="fade-right" data-aos-duration="1200" data-aos-delay="400">So far in my journey, I’ve built a unique mix of skills that make me a strong candidate for any tech-forward team. I’m confident working with HTML and CSS to create clean, responsive designs. I’ve learned the basics of JavaScript for interactive web development, and I can hold my own when it comes to SQL and Linux. I also understand how to improve a site’s visibility through SEO, and I’m proud to have earned my AWS Cloud Practitioner certification, giving me a solid foundation in cloud technologies.</p>
+                   <div class="experience" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="600">
+                    <div class="num">1.5</div>
+                    <div class="exp">Years of</br>Experience</div>
+                   </div>
+                </div>
+            <div class="boxes">
+                <div class="box">
+                    <div class="topic" data-aos="fade-right" data-aos-duration="1200" data-aos-delay="150">HTML</div>
+                    <div class="percent" data-aos="zoom-in" data-aos-duration="1200" data-aos-delay="300">80%</div>
+                </div>
+                <div class="box">
+                    <div class="topic" data-aos="fade-left" data-aos-duration="1200" data-aos-delay="150">CSS</div>
+                    <div class="percent" data-aos="zoom-in" data-aos-duration="1200" data-aos-delay="300">60%</div>
+                </div>
+                <div class="box">
+                    <div class="topic" data-aos="fade-right" data-aos-duration="1200" data-aos-delay="450">JavaScript</div>
+                    <div class="percent" data-aos="zoom-in" data-aos-duration="1200" data-aos-delay="600">30%</div>
+                </div>
+                <div class="box">
+                    <div class="topic" data-aos="fade-left" data-aos-duration="1200" data-aos-delay="450">SQL</div>
+                    <div class="percent" data-aos="zoom-in" data-aos-duration="1200" data-aos-delay="600">48%</div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </section>
+
+    <!--Experience Section Start-->
+    <section class="experience" id="experience">
+        <div class="content">
+            <div class="title" data-aos="fade-up" data-aos-duration="1200"><span>My Experience</span></div>
+            <div class="boxes">
+                <div class="box" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="200">
+                    <div class="icon">
+                        <i class="fa-solid fa-laptop-code"></i>
+                    </div>
+                    <div class="topic">Web Development</div>
+                    <p>My experience with Web Development covers mostly the Front-end for now, I am skilled at HTML/CSS and a little bit of JavaScript</p>
+                </div>
+                <div class="box" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="400">
+                    <div class="icon">
+                        <i class="fa-solid fa-cloud"></i>
+                    </div>
+                    <div class="topic">Cloud Services</div>
+                    <p>I took my time to dive deep and understand the services that the cloud offers as I see there the future of the industry, I've had hands-on experience as well as I have learned the concepts</p>
+                </div>
+                <div class="box" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="600">
+                    <div class="icon">
+                        <i class="fa-solid fa-database"></i>
+                    </div>
+                    <div class="topic">Databases (SQL)</div>
+                    <p>My experience with SQL based databases started from the cloud services while learning Aurora and Redshift, I also have hands-on experience with MySQL</p>
+                </div>
+                <div class="box" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="800">
+                    <div class="icon">
+                        <i class="fa-solid fa-chart-simple"></i>
+                    </div>
+                    <div class="topic">SEO Strategist</div>
+                    <p>As a huge part of the digital marketing I studied the SEO strategies and how they are applied, I gained hands-on experience with Google Console, Keyword research, Ads management and responsive design</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--Contact Section Start-->
+    <section class="contact" id="contact">
+        <div class="content">
+            <div class="title" data-aos="fade-up" data-aos-duration="1500"><span>Contact Me</span></div>
+            <div class="text">
+                <div class="topic" data-aos="fade-right" data-aos-duration="1500" data-aos-delay="200">Have Any Projects?</div>
+                <p>I'm always open to new projects and collaborations. If you have an idea or a project in mind, feel free to reach out!</p>
+                <div class="button" data-aos="zoom-in" data-aos-duration="1500" data-aos-delay="400">
+                    <button>Let's Connect</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--Footer Section Start-->
+    <footer>
+        <div class="text">
+            <span>Created By <a href="#">Alejandro</a> | &#169; 2025 All Rights Reserved</span>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init({offset:0});
+    </script>
+    <script src="script.js"></script>
+    
 </body>
 </html>
